@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="WeakPaint.Views.Pages.SLineView">
+    <Grid RowDefinitions="*,*,*,*,*,*,*,*,*" ColumnDefinitions="*,*">
+		<TextBlock Text="Имя:" Grid.Column="0" Grid.Row="0"/>
+		<TextBox Grid.Row="0" Grid.Column="1"  Text="{Binding $parent[Window].DataContext.Name}" Name="textBoxName"/>
+		<TextBlock Text="Начальная точка:" Grid.Column="0" Grid.Row="1"/>
+		<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding $parent[Window].DataContext.GetSetBeginPointSLines}" Name="textBoxStart"/>
+		<TextBlock Text="Конечная точка:" Grid.Column="0" Grid.Row="2" />
+		<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding $parent[Window].DataContext.GetSetEndPointSLines}" Name="textBoxEnd"/>
+		<TextBlock Text="Цвет:" Grid.Column="0" Grid.Row="3"/>
+		<ComboBox Grid.Column="1" Grid.Row="3" SelectedItem="{Binding $parent[Window].DataContext.MCConture}" Items="{Binding $parent[Window].DataContext.Solors}" Name="comboBoxColor">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Rectangle Fill="{Binding Color}" Width="30" Height="20"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		<TextBlock Text="Толщина:" Grid.Column="0" Grid.Row="4"/>
+		<NumericUpDown Minimum="1" Value="1" Grid.Column="1" Grid.Row="4" Text="{Binding $parent[Window].DataContext.GetSetGaugeSLines}" Name="numericUpDownStroke">
+		</NumericUpDown>
+		<TextBlock Text="Угол поворота: " Grid.Column="0" Grid.Row="5"/>
+		<TextBox Grid.Row="5" Grid.Column="1" Text="{Binding $parent[Window].DataContext.GetSetRotateTransformAngle}" Name="textBoxRenderTransformAngle"/>
+		<TextBlock Text="Точка поворота: " Grid.Column="0" Grid.Row="6"/>
+		<TextBox Grid.Row="6" Grid.Column="1" Text="{Binding $parent[Window].DataContext.GetSetPointTurn}" Name="textBoxRotateCenter"/>
+		<TextBlock Text="Увеличение: " Grid.Column="0" Grid.Row="7"/>
+		<TextBox Grid.Row="7" Grid.Column="1" Text="{Binding $parent[Window].DataContext.GetSetScaleParameters}" Name="textBoxScaleTransform"/>
+		<TextBlock Text="Наклон: " Grid.Column="0" Grid.Row="8"/>
+		<TextBox Grid.Row="8" Grid.Column="1" Text="{Binding $parent[Window].DataContext.GetSetSkewParameters}" Name="textBoxSkewTransform"/>
+	</Grid>
+</UserControl>

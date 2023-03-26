@@ -1,0 +1,69 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:WeakPaint.ViewModels"
+		xmlns:views="clr-namespace:WeakPaint.Views.Pages"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="WeakPaint.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="WeakPaint Created By Kagava">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+
+	<Grid RowDefinitions="0.15*,0.85*">
+		<Grid Grid.Row="0" ColumnDefinitions="*, *">
+			<Menu Grid.Column="0">
+				<MenuItem Header="Экспортировать" Name="menuExport">
+					<MenuItem Header="Экспортировать в .png"> </MenuItem>
+					<MenuItem Header="Экспортировать в .xml"> </MenuItem>
+					<MenuItem Header="Экспортировать в .json"> </MenuItem>
+				</MenuItem>
+			</Menu>
+			<Menu Grid.Column="1">
+				<MenuItem Header="Импортировать" Name="menuImport">
+					<MenuItem Header="Импортировать из .json"></MenuItem>
+					<MenuItem Header="Импортировать из .xml"></MenuItem>
+				</MenuItem>
+			</Menu>
+		</Grid>
+
+		<Grid ColumnDefinitions="0.23*,*,0.5*" Grid.Row="1">
+			<Grid RowDefinitions="0.08*, *, 0.08*" Grid.Column="0">
+				<ComboBox Grid.Row="0" SelectedItem="{Binding Content}" Items="{Binding VmbaseCollection}" Name="comboBoxShape">
+					<ComboBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding Header}"/>
+						</DataTemplate>
+					</ComboBox.ItemTemplate>
+				</ComboBox>	
+				<ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding Content}"/>
+				<Grid ColumnDefinitions="*,*" Grid.Row="2">
+					<Button Content="Добавить" Grid.Column="0"  Command="{Binding AddFigure}" Name="buttonAdd"/>
+					<Button Content="Сбросить" Grid.Column="1" Command="{Binding ClearSetting}" Name="buttonClear"/>
+				</Grid>
+			</Grid>
+			<ItemsControl Items="{Binding Shapes}" Grid.Column="1">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<Canvas Name="canvas"/>
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+			</ItemsControl>
+			<Grid Grid.Column="2" ColumnDefinitions="0.9*, 0.1*">
+				<ListBox SelectedIndex="{Binding GetSetIndex}" Grid.Column="0" Items="{Binding CollectionsOfNames}" SelectedItem="{Binding TakeNameFromLB}" DoubleTapped="SI" Name="listBoxShapes">
+					<ListBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Grid.Column="0" Text="{Binding Name}" />
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
+				<Button Grid.Column="1" Width="30" Height="30" Command="{Binding DeleteCommand}" VerticalAlignment="Top" HorizontalAlignment="Center" Name="buttonDeleteShape"/>
+			</Grid>
+			
+		</Grid>
+	</Grid>
+</Window>

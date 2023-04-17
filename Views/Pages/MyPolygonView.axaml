@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="WeakPaint.Views.Pages.MyPolygonView">
-	<Grid RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*">
+	<Grid RowDefinitions="*,*,*,*,*,*,*,*,*" ColumnDefinitions="*,*">
 		<TextBlock Text="Имя:" Grid.Column="0" Grid.Row="0"/>
 		<TextBox Grid.Row="0" Grid.Column="1"  Text="{Binding $parent[Window].DataContext.Name}" Name="textBoxName"/>
 		<TextBlock Text="Точки:" Grid.Column="0" Grid.Row="1" />
@@ -28,5 +28,13 @@
 				</DataTemplate>
 			</ComboBox.ItemTemplate>
 		</ComboBox>
+		<TextBlock Text="Угол поворота: " Grid.Column="0" Grid.Row="5"/>
+		<TextBox Grid.Row="5" Grid.Column="1" Text="{Binding $parent[Window].DataContext.GetSetRotateTransformAngle}" Name="textBoxRenderTransformAngle"/>
+		<TextBlock Text="Точка поворота: " Grid.Column="0" Grid.Row="6"/>
+		<TextBox Grid.Row="6" Grid.Column="1" Text="{Binding $parent[Window].DataContext.GetSetPointTurn}" Name="textBoxRotateCenter"/>
+		<TextBlock Text="Увеличение: " Grid.Column="0" Grid.Row="7"/>
+		<TextBox Grid.Row="7" Grid.Column="1" Text="{Binding $parent[Window].DataContext.GetSetScaleParameters}" Name="textBoxScaleTransform"/>
+		<TextBlock Text="Наклон: " Grid.Column="0" Grid.Row="8"/>
+		<TextBox Grid.Row="8" Grid.Column="1" Text="{Binding $parent[Window].DataContext.GetSetSkewParameters}" Name="textBoxSkewTransform"/>
 	</Grid>
 </UserControl>

@@ -16,17 +16,17 @@
 
 	<Grid RowDefinitions="0.15*,0.85*">
 		<Grid Grid.Row="0" ColumnDefinitions="*, *">
-			<Menu Grid.Column="0">
-				<MenuItem Header="Экспортировать" Name="menuExport">
-					<MenuItem Header="Экспортировать в .png"> </MenuItem>
-					<MenuItem Header="Экспортировать в .xml"> </MenuItem>
-					<MenuItem Header="Экспортировать в .json"> </MenuItem>
+			<Menu >
+				<MenuItem Name="menuExport" Header="Экспортировать">
+					<MenuItem Header="Экспортировать в png"  Click="SaveCnavasAsPNG"/>
+					<MenuItem Header="Экспортировать в xml" Click="SaveCnavasAsXML"/>
+					<MenuItem Header="Экспортировать в json" Click="SaveCnavasAsJSON"/>
 				</MenuItem>
-			</Menu>
+			</Menu>	
 			<Menu Grid.Column="1">
 				<MenuItem Header="Импортировать" Name="menuImport">
-					<MenuItem Header="Импортировать из .json"></MenuItem>
-					<MenuItem Header="Импортировать из .xml"></MenuItem>
+					<MenuItem Header="Импортировать из .json" Click="OpenJSON"></MenuItem>
+					<MenuItem Header="Импортировать из .xml" Click="OpenXML"></MenuItem>
 				</MenuItem>
 			</Menu>
 		</Grid>
